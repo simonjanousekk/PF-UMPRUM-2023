@@ -10,8 +10,12 @@ class Cell {
 
     change_state() {
         this.state = floor(random(1, state_count))
-        if (random() > .2) {
+        var r = random()
+        if (r > .3) {
             this.c = 255;
+            // break;
+        } else if (r > .2) {
+            this.c = 0;
         } else {
             this.c = color(random(255), random(255), random(255))
         }
@@ -55,6 +59,8 @@ class Cell {
         }
         // fill(200, 100)
         // noStroke()
+        // noFill()
+        // stroke(255, 1)
         // rect(
         //     this.pos.x + shape_bor,
         //     this.pos.y + shape_bor,

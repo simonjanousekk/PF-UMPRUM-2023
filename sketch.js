@@ -4,19 +4,37 @@ var grid1, grid2;
 
 var user_layer = 0
 var layer_count = 4
+var cell_sizes
 
 var grids
 
+// cernej ctverec
+
+
 function setup() {
+
     frameRate(20)
     // noSmooth()
     createCanvas(windowWidth, windowHeight);
     background(20);
+
+    var longer_side = width > height ? width : height
+    console.log(width, height, longer_side)
+    var smallest_cell_size = floor(longer_side / 100)
+    cell_sizes = [
+        smallest_cell_size*8,
+        smallest_cell_size*4,
+        smallest_cell_size*2,
+        smallest_cell_size
+    ]
+
+    console.log(cell_sizes)
+
     grids = [
-        grid0 = new Cell_Layer(200),
-        grid1 = new Cell_Layer(100),
-        grid2 = new Cell_Layer(50),
-        grid3 = new Cell_Layer(25)
+        grid0 = new Cell_Layer(cell_sizes[0]),
+        grid1 = new Cell_Layer(cell_sizes[1]),
+        grid2 = new Cell_Layer(cell_sizes[2]),
+        grid3 = new Cell_Layer(cell_sizes[3])
     ]
 }
 
@@ -29,10 +47,10 @@ function draw() {
 
     var tmp_cols = grids[user_layer].cols;
     var tmp_rows = grids[user_layer].rows;
-    console.log("cols, rows", tmp_cols, tmp_rows)
+
     if (
-        tmp.x > 0 && tmp.x < tmp_cols &&
-        tmp.y > 0 && tmp.y < tmp_rows
+        tmp.x >= 0 && tmp.x < tmp_cols &&
+        tmp.y >= 0 && tmp.y < tmp_rows
     ) {
         grids[user_layer].grid[tmp.x][tmp.y].change_state();
     }
@@ -43,7 +61,6 @@ function draw() {
 }
 
 function create_grid(cols, rows, cs) {
-    console.log("grid created")
     g = []
     for (var x = 0; x < rows; x++) {
         g[x] = [];
@@ -51,7 +68,6 @@ function create_grid(cols, rows, cs) {
             g[x][y] = new Cell(x * cs, y * cs, cs)
         }
     }
-    console.log(g)
     return g;
 }
 
@@ -60,10 +76,10 @@ class Cell_Layer {
 
     constructor(cs) {
         this.cell_size = cs;
-        this.cols = floor(windowWidth / this.cell_size);
-        this.rows = floor(windowHeight / this.cell_size);
+        this.cols = round(windowWidth / this.cell_size);
+        this.rows = round(windowHeight / this.cell_size);
         this.grid = create_grid(this.cols, this.rows, this.cell_size);
-
+        console.log(this.cols, this.rows)
     }
 
     update_display() {
