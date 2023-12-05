@@ -10,13 +10,40 @@
             margin:0;
             padding:0;
             overflow: hidden;
+            background-color: rgb(30, 30, 30);
         }
+
+        h1 {
+            font-family: sans-serif;
+            position: absolute;
+            padding: .1em;
+            margin: .5em;
+            color: black;
+            font-size: 3vw;
+            background: rgb(200, 200, 200);
+        }
+
+        .top {
+            top: 0;
+            left: 0;
+        }
+
+        .bottom {
+            bottom: 0;
+            right: 0;
+        }
+
+
     </style>
  </head>
  <body>
-    
+    <h1 class="top">UMPRUM</h1>
+    <h1 class="bottom">PF 2024</h1>
+
+    <!-- scripts -->
     <script src="p5.min.js"></script>
     <script src="sketch.js"></script>
     <script src="cell.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
  </body>
  </html>

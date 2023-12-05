@@ -1,5 +1,4 @@
-var state_count = 4;
-var shape_bor = 0;
+var state_count = 5;
 class Cell {
     constructor(x, y, cs) {
         this.pos = createVector(x, y);
@@ -12,18 +11,13 @@ class Cell {
         this.state = floor(random(1, state_count))
         var r = random()
         if (r > .3) {
-            this.c = 255;
+            this.c = color(255, 250, 250);
             // break;
         } else if (r > .2) {
-            this.c = 0;
+            this.c = 30;
         } else {
             this.c = color(random(255), random(255), random(255))
         }
-        // if (this.state = 0) {
-        //     this.state = 1;
-        // } else {
-        //     this.state = 0;
-        // }
     }
 
     display() {
@@ -34,26 +28,36 @@ class Cell {
                 break;
             case 1:
                 rect(
-                    this.pos.x + shape_bor,
-                    this.pos.y + shape_bor,
-                    this.cell_size - shape_bor * 2,
-                    this.cell_size - shape_bor * 2
+                    this.pos.x,
+                    this.pos.y,
+                    this.cell_size,
+                    this.cell_size
                 );
                 break;
             case 2:
                 circle(
                     this.pos.x + this.cell_size / 2, 
                     this.pos.y + this.cell_size / 2,
-                    this.cell_size - shape_bor * 2)
+                    this.cell_size)
                 break;
             case 3:
                 triangle(
                     this.pos.x + this.cell_size / 2,
-                    this.pos.y + shape_bor,
-                    this.pos.x + shape_bor,
-                    this.pos.y + this.cell_size - shape_bor,
-                    this.pos.x + this.cell_size - shape_bor,
-                    this.pos.y + this.cell_size - shape_bor
+                    this.pos.y,
+                    this.pos.x,
+                    this.pos.y + this.cell_size,
+                    this.pos.x + this.cell_size,
+                    this.pos.y + this.cell_size
+                )
+                break;
+            case 4:
+                triangle(
+                    this.pos.x,
+                    this.pos.y,
+                    this.pos.x + this.cell_size,
+                    this.pos.y,
+                    this.pos.x + this.cell_size/2,
+                    this.pos.y + this.cell_size
                 )
                 break;
         }
@@ -62,10 +66,10 @@ class Cell {
         // noFill()
         // stroke(255, 1)
         // rect(
-        //     this.pos.x + shape_bor,
-        //     this.pos.y + shape_bor,
-        //     this.cell_size - shape_bor * 2,
-        //     this.cell_size - shape_bor * 2
+        //     this.pos.x,
+        //     this.pos.y,
+        //     this.cell_size,
+        //     this.cell_size
         // )
 
     }

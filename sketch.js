@@ -6,29 +6,29 @@ var user_layer = 0
 var layer_count = 4
 var cell_sizes
 
+var framerate = 15
+var layer_change_speed = 5
+
 var grids
 
 // cernej ctverec
 
 
 function setup() {
-
-    frameRate(20)
-    // noSmooth()
+    frameRate(framerate)
     createCanvas(windowWidth, windowHeight);
-    background(20);
+    background(30);
 
-    var longer_side = width > height ? width : height
-    console.log(width, height, longer_side)
-    var smallest_cell_size = floor(longer_side / 100)
+    var longer_side = width > height ? width : height;
+    console.log(width, height, longer_side);
+    var largest_cell_size = round(longer_side / 30);
+    console.log(longer_side, largest_cell_size, largest_cell_size * 20);
     cell_sizes = [
-        smallest_cell_size*8,
-        smallest_cell_size*4,
-        smallest_cell_size*2,
-        smallest_cell_size
+        largest_cell_size,
+        largest_cell_size / 2,
+        largest_cell_size / 4,
+        largest_cell_size / 8
     ]
-
-    console.log(cell_sizes)
 
     grids = [
         grid0 = new Cell_Layer(cell_sizes[0]),
@@ -58,22 +58,25 @@ function draw() {
     for (var x = 0; x < grids.length; x++) {
         grids[x].update_display();
     }
+
+    if (frameCount % (framerate * layer_change_speed) == 0) {
+        change_layer()
+    }
 }
 
 function create_grid(cols, rows, cs) {
     g = []
-    for (var x = 0; x < rows; x++) {
+    for (var x = 0; x < cols; x++) {
         g[x] = [];
-        for (var y = 0; y < cols; y++) {
+        for (var y = 0; y < rows; y++) {
             g[x][y] = new Cell(x * cs, y * cs, cs)
         }
     }
     return g;
 }
 
-
+// grid class
 class Cell_Layer {
-
     constructor(cs) {
         this.cell_size = cs;
         this.cols = round(windowWidth / this.cell_size);
@@ -83,14 +86,15 @@ class Cell_Layer {
     }
 
     update_display() {
-        for (var x = 0; x < this.rows; x++) {
-            for (var y = 0; y < this.cols; y++) {
+        for (var x = 0; x < this.cols; x++) {
+            for (var y = 0; y < this.rows; y++) {
                 this.grid[x][y].display();
             }
         }
     }
 }
 
+// change layer that user is in (eg. what resolution grid are you drawing in)
 function change_layer() {
     user_layer += 1
     if (user_layer >= layer_count) {
@@ -99,8 +103,27 @@ function change_layer() {
     console.log(user_layer)
 }
 
+
+// testing with keyboard
 function keyPressed() {
     if (key == ' ') {
-        change_layer()
+        change_layer();
+    } else if (key == 's') {
+        capture_screenshot();
     }
+}
+
+
+// screenshot function
+function capture_screenshot() {
+    html2canvas(document.body).then(canvas => {
+        const imageData = canvas.toDataURL('image/png');
+        const downloadLink = document.createElement('a');
+        downloadLink.style.display = "none";
+        downloadLink.href = imageData;
+        downloadLink.download = 'umprum_pf_2024.png';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    });
 }
