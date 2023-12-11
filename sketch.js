@@ -11,18 +11,14 @@ var layer_change_speed = 5
 
 var grids
 
-// cernej ctverec
-
-
 function setup() {
     frameRate(framerate)
-    createCanvas(windowWidth, windowHeight);
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.addClass("noselect");
     background(30);
 
     var longer_side = width > height ? width : height;
-    console.log(width, height, longer_side);
-    var largest_cell_size = round(longer_side / 30);
-    console.log(longer_side, largest_cell_size, largest_cell_size * 20);
+    var largest_cell_size = round(longer_side / 20);
     cell_sizes = [
         largest_cell_size,
         largest_cell_size / 2,
@@ -36,31 +32,35 @@ function setup() {
         grid2 = new Cell_Layer(cell_sizes[2]),
         grid3 = new Cell_Layer(cell_sizes[3])
     ]
+
+    prevMouseX = mouseX;
+    prevMouseY = mouseY;
 }
 
 function draw() {
-    var current_cell_size = grids[user_layer].cell_size
-    var tmp = createVector(
-        floor(mouseX / current_cell_size),
-        floor(mouseY / current_cell_size)
-    );
 
-    var tmp_cols = grids[user_layer].cols;
-    var tmp_rows = grids[user_layer].rows;
+    if (!mouseIsPressed === true) {
+        var mouse_speed = calculate_mouse_speed()
+        index_mouse_speed = floor(map_constrain(mouse_speed, 150, 20, 0, layer_count - 1));
 
-    if (
-        tmp.x >= 0 && tmp.x < tmp_cols &&
-        tmp.y >= 0 && tmp.y < tmp_rows
-    ) {
-        grids[user_layer].grid[tmp.x][tmp.y].change_state();
-    }
+        change_layer(index_mouse_speed);
 
-    for (var x = 0; x < grids.length; x++) {
-        grids[x].update_display();
-    }
+        var current_cell_size = grids[user_layer].cell_size
+        var tmp = createVector(
+            floor(mouseX / current_cell_size),
+            floor(mouseY / current_cell_size)
+        );
 
-    if (frameCount % (framerate * layer_change_speed) == 0) {
-        change_layer()
+        var tmp_cols = grids[user_layer].cols;
+        var tmp_rows = grids[user_layer].rows;
+
+        if (
+            tmp.x >= 0 && tmp.x < tmp_cols &&
+            tmp.y >= 0 && tmp.y < tmp_rows
+        ) {
+            grids[user_layer].grid[tmp.x][tmp.y].change_state();
+            grids[user_layer].grid[tmp.x][tmp.y].display();
+        }
     }
 }
 
@@ -82,7 +82,6 @@ class Cell_Layer {
         this.cols = round(windowWidth / this.cell_size);
         this.rows = round(windowHeight / this.cell_size);
         this.grid = create_grid(this.cols, this.rows, this.cell_size);
-        console.log(this.cols, this.rows)
     }
 
     update_display() {
@@ -95,19 +94,35 @@ class Cell_Layer {
 }
 
 // change layer that user is in (eg. what resolution grid are you drawing in)
-function change_layer() {
+function change_layer_random() {
     user_layer += 1
     if (user_layer >= layer_count) {
         user_layer = 0
     }
-    console.log(user_layer)
+}
+
+function change_layer(index) {
+    if (index >= 0 && index <= layer_count) {
+        user_layer = index
+    }
+}
+
+let prevMouseX;
+let prevMouseY;
+let mouseSpeed;
+function calculate_mouse_speed() {
+    let deltaX = mouseX - prevMouseX;
+    let deltaY = mouseY - prevMouseY;
+    prevMouseX = mouseX;
+    prevMouseY = mouseY;
+    return dist(deltaX, deltaY, 0, 0);
 }
 
 
 // testing with keyboard
 function keyPressed() {
     if (key == ' ') {
-        change_layer();
+        change_layer_random();
     } else if (key == 's') {
         capture_screenshot();
     }
@@ -126,4 +141,16 @@ function capture_screenshot() {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     });
+}
+
+
+
+
+
+
+
+function map_constrain(value, start1, stop1, start2, stop2) {
+    let mappedValue = map(value, start1, stop1, start2, stop2);
+    let constrainedValue = constrain(mappedValue, start2, stop2);
+    return constrainedValue;
 }

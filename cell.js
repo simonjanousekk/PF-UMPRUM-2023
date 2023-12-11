@@ -36,7 +36,7 @@ class Cell {
                 break;
             case 2:
                 circle(
-                    this.pos.x + this.cell_size / 2, 
+                    this.pos.x + this.cell_size / 2,
                     this.pos.y + this.cell_size / 2,
                     this.cell_size)
                 break;
@@ -56,7 +56,7 @@ class Cell {
                     this.pos.y,
                     this.pos.x + this.cell_size,
                     this.pos.y,
-                    this.pos.x + this.cell_size/2,
+                    this.pos.x + this.cell_size / 2,
                     this.pos.y + this.cell_size
                 )
                 break;
