@@ -46,9 +46,15 @@ h1 {
     cursor: grab;
 }
 
-/*.outline {
+#changeColor {
+    top: 2em;
+    right: 0;
+    cursor: pointer;
+}
+
+.outline {
     border: 2px solid white;
-}*/
+}
 
 .noselect {
     -webkit-touch-callout: none;

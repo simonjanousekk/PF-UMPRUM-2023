@@ -8,26 +8,43 @@ class Cell {
         this.state = 0;
         this.c = color(random(255), random(255), random(255))
         this.cell_size = cs
+        this.colorPalettes = [
+                            [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"),  color("#FFAACF")],
+                            [color("#7071E8"), color("#C683D7"), color("#ED9ED6"), color("FFC7C7")],
+                            [color("#F31559"), color("#FF52A2"), color("#FFB07F"), color("FFECAF")],
+                            ]
+
+        this.colorPaletteNum = 2
+
+    }
+
+    backGroundColor(){
+        return this.colorPalettes[this.colorPaletteNum][0]
+    }
+
+    num_of_color_palettes(){
+        return this.colorPalettes.length
+    }
+
+    change_color_palette(int) {
+        this.colorPaletteNum = int;
     }
 
     change_state() {
-        var colorsShapes = [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), ]
-
         this.state = floor(random(1, state_count))
         var r = random()
         if (r > .3) {
             this.c = color(255, 250, 250);
             // break;
         } else if (r > .2) {
-            this.c = colorsShapes[Math.round(random(2))]
+            this.c = this.colorPalettes[this.colorPaletteNum][Math.round(random(2))+1]
         } else {
-           this.c = colorsShapes[Math.round(random(2))]
+           this.c = this.colorPalettes[this.colorPaletteNum][Math.round(random(2))+1]
             //this.c = color(255, 105, 105, 90);
         }
         
         r = random()
         drawingContext.filter = 'blur('+ random(10) + 'px)';
-        //drawingContext.filter = 'none';
     }
 
     display() {

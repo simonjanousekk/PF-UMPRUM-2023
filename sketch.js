@@ -11,6 +11,9 @@ var layer_change_speed = 5
 
 var grids
 
+var numOfColorPaletts;
+var colorPaletteNum = 2;
+
 function setup() {
     frameRate(framerate)
     let canvas = createCanvas(windowWidth, windowHeight);
@@ -18,7 +21,7 @@ function setup() {
 
     // Background Color
     //background(20, 30, 70);
-    background(color("#F6E6C2"));
+
 
     var longer_side = width > height ? width : height;
     var largest_cell_size = round(longer_side / 20);
@@ -39,6 +42,11 @@ function setup() {
         grid3 = new Cell_Layer(cell_sizes[3])
 
     ]
+
+    console.log(grids)
+
+    numOfColorPaletts = grids[0].grid[0][0].num_of_color_palettes();
+    background(grids[0].grid[0][0].backGroundColor());
 
     prevMouseX = mouseX;
     prevMouseY = mouseY;
@@ -65,6 +73,7 @@ function draw() {
             tmp.x >= 0 && tmp.x < tmp_cols &&
             tmp.y >= 0 && tmp.y < tmp_rows
         ) {
+            grids[user_layer].grid[tmp.x][tmp.y].change_color_palette(colorPaletteNum);
             grids[user_layer].grid[tmp.x][tmp.y].change_state();
             grids[user_layer].grid[tmp.x][tmp.y].display();
         }
@@ -153,7 +162,15 @@ function capture_screenshot() {
 }
 
 
-
+function change_colors() {
+    if (colorPaletteNum == numOfColorPaletts-1) {
+        colorPaletteNum = 0;
+    } else {
+        colorPaletteNum++;
+    }
+    grids[0].grid[0][0].  change_color_palette(colorPaletteNum);
+    background(grids[0].grid[0][0].backGroundColor(colorPaletteNum));
+}
 
 
 
