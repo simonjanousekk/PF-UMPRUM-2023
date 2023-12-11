@@ -1,5 +1,8 @@
+
+
 var state_count = 5;
 class Cell {
+
     constructor(x, y, cs) {
         this.pos = createVector(x, y);
         this.state = 0;
@@ -8,6 +11,8 @@ class Cell {
     }
 
     change_state() {
+        var colorsShapes = [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), ]
+
         this.state = floor(random(1, state_count))
         var r = random()
         if (r > .3) {
@@ -16,8 +21,13 @@ class Cell {
         } else if (r > .2) {
             this.c = 30;
         } else {
-            this.c = color(random(255), random(255), random(255))
+           this.c = colorsShapes[Math.round(random(2))]
+            //this.c = color(255, 105, 105, 90);
         }
+        
+        r = random()
+        drawingContext.filter = 'blur('+ random(10) + 'px)';
+        //drawingContext.filter = 'none';
     }
 
     display() {

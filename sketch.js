@@ -6,7 +6,7 @@ var user_layer = 0
 var layer_count = 4
 var cell_sizes
 
-var framerate = 15
+var framerate = 24
 var layer_change_speed = 5
 
 var grids
@@ -15,22 +15,29 @@ function setup() {
     frameRate(framerate)
     let canvas = createCanvas(windowWidth, windowHeight);
     canvas.addClass("noselect");
-    background(30);
+
+    // Background Color
+    //background(20, 30, 70);
+    background(color("#F6E6C2"));
 
     var longer_side = width > height ? width : height;
     var largest_cell_size = round(longer_side / 20);
     cell_sizes = [
+        //largest_cell_size * 2,
         largest_cell_size,
         largest_cell_size / 2,
         largest_cell_size / 4,
-        largest_cell_size / 8
+        largest_cell_size / 8,
+
     ]
 
     grids = [
         grid0 = new Cell_Layer(cell_sizes[0]),
         grid1 = new Cell_Layer(cell_sizes[1]),
         grid2 = new Cell_Layer(cell_sizes[2]),
+        grid3 = new Cell_Layer(cell_sizes[3]),
         grid3 = new Cell_Layer(cell_sizes[3])
+
     ]
 
     prevMouseX = mouseX;
@@ -132,6 +139,8 @@ function keyPressed() {
 // screenshot function
 function capture_screenshot() {
     html2canvas(document.body).then(canvas => {
+        document.getElementById("download").style.display = "none";
+
         const imageData = canvas.toDataURL('image/png');
         const downloadLink = document.createElement('a');
         downloadLink.style.display = "none";
@@ -154,3 +163,4 @@ function map_constrain(value, start1, stop1, start2, stop2) {
     let constrainedValue = constrain(mappedValue, start2, stop2);
     return constrainedValue;
 }
+
