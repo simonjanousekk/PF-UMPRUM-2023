@@ -18,6 +18,7 @@ h1 {
     font-size: 3vw;
     background: rgb(30, 30, 30);
     cursor: default;
+    font-weight: normal;
 }
 
 #pf {
