@@ -16,10 +16,12 @@ h1 {
     padding: .001em .2em;
     padding-bottom: 0.1em;
     margin: .5em;
-    font-size: 3vw;
+    font-size: 2.5vw;
     background: rgb(30, 30, 30);
+    box-shadow: 0 0 .08em .05em rgb(30, 30, 30);
     cursor: default;
     font-weight: normal;
+    border-radius: 50px;
 }
 
 #pf {
@@ -39,14 +41,14 @@ h1 {
 }
 
 #prani {
-    top: 5em;
-    left: 0;
+    top: 0em;
+    left: 5em;
     cursor: grab;
 }
 
-.outline {
+/*.outline {
     border: 2px solid white;
-}
+}*/
 
 .noselect {
     -webkit-touch-callout: none;

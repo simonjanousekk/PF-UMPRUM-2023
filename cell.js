@@ -19,7 +19,7 @@ class Cell {
             this.c = color(255, 250, 250);
             // break;
         } else if (r > .2) {
-            this.c = 30;
+            this.c = colorsShapes[Math.round(random(2))]
         } else {
            this.c = colorsShapes[Math.round(random(2))]
             //this.c = color(255, 105, 105, 90);
