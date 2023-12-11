@@ -43,13 +43,13 @@ function setup() {
 
     ]
 
-    console.log(grids)
-
     numOfColorPaletts = grids[0].grid[0][0].num_of_color_palettes();
     background(grids[0].grid[0][0].backGroundColor());
 
     prevMouseX = mouseX;
     prevMouseY = mouseY;
+
+
 }
 
 function draw() {
@@ -169,6 +169,7 @@ function change_colors() {
         colorPaletteNum++;
     }
     grids[0].grid[0][0].  change_color_palette(colorPaletteNum);
+    drawingContext.filter = 'none';
     background(grids[0].grid[0][0].backGroundColor(colorPaletteNum));
 }
 
