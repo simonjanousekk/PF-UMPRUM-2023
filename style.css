@@ -75,6 +75,9 @@ body {
     position: static;
 }
 
+#prani:focus {
+    outline: none;
+}
 
 .noselect {
     -webkit-touch-callout: none;
