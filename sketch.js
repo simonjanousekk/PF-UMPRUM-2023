@@ -16,7 +16,8 @@ function setup() {
     color_palletes = [
         [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), color(10)],
         [color(222, 245, 229), color(188, 234, 213), color(158, 213, 197), color(142, 195, 176)],
-        [color((25, 24, 37)), color(134, 93, 255), color(227, 132, 255), color(255, 163, 253)],
+        [color(25, 24, 37), color(134, 93, 255), color(227, 132, 255), color(255, 163, 253)],
+        [color(6, 40, 61), color(19, 99, 223), color(71, 181, 255), color(223, 246, 255)],
         [color("#DDDDDD"), color("#222831"), color("#30475E"), color(252, 80, 45)],
     ]
 
@@ -140,7 +141,10 @@ function draw_shape(i_x, i_y, cell_size) {
 }
 
 function change_colors() {
-    current_color_pallete = color_palletes[floor(random(color_palletes.length))]
+    var prev_color_pallete = current_color_pallete;
+    while (prev_color_pallete == current_color_pallete) {
+        current_color_pallete = color_palletes[floor(random(color_palletes.length))];
+    }
     drawingContext.filter = "none";
     background(current_color_pallete[0])
 }
