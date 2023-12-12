@@ -21,7 +21,7 @@ function setup() {
     ]
 
     var longer_side = width > height ? width : height;
-    var largest_cell_size = round(longer_side / 20);
+    var largest_cell_size = round(longer_side / 15);
     cell_sizes = [
         largest_cell_size,
         largest_cell_size / 2,
@@ -92,6 +92,11 @@ function draw_shape(i_x, i_y, cell_size) {
 
     var c = current_color_pallete[floor(random(1, current_color_pallete.length))]
 
+    var r = random(-1, 8);
+    r = clamp(r, 0, 8);
+    drawingContext.filter = 'blur(' + r + 'px)';
+
+
     noStroke();
     fill(c);
     switch (floor(random(5))) {
@@ -136,6 +141,7 @@ function draw_shape(i_x, i_y, cell_size) {
 
 function change_colors() {
     current_color_pallete = color_palletes[floor(random(color_palletes.length - 1))]
+    drawingContext.filter = "none";
     background(current_color_pallete[0])
 }
 
@@ -168,3 +174,8 @@ document.getElementById('prani').addEventListener('keypress', (evt) => {
         evt.preventDefault();
     }
 });
+
+
+function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+}
