@@ -13,15 +13,16 @@ body {
 h1 {
     font-family: "Saans";
     position: absolute;
-    padding: .001em .2em;
-    padding-bottom: 0.1em;
+    padding: .2em .4em;
     margin: .5em;
     font-size: 2.5vw;
     background: rgb(30, 30, 30);
-    box-shadow: 0 0 .08em .05em rgb(30, 30, 30);
     cursor: default;
     font-weight: normal;
+
+
     border-radius: 50px;
+    box-shadow: 0 0 .08em .05em rgb(30, 30, 30);
 }
 
 #pf {

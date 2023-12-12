@@ -135,21 +135,13 @@ function calculate_mouse_speed() {
 }
 
 
-// testing with keyboard
-function keyPressed() {
-    if (key == ' ') {
-        change_layer_random();
-    } else if (key == 's') {
-        capture_screenshot();
-    }
-}
-
-
 // screenshot function
 function capture_screenshot() {
-    html2canvas(document.body).then(canvas => {
-        document.getElementById("download").style.display = "none";
+    document.getElementById("download").style.visibility = "hidden";
+    document.getElementById("changeColor").style.visibility = "hidden";
 
+
+    html2canvas(document.body).then(canvas => {
         const imageData = canvas.toDataURL('image/png');
         const downloadLink = document.createElement('a');
         downloadLink.style.display = "none";
@@ -159,16 +151,19 @@ function capture_screenshot() {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     });
+
+    document.getElementById("download").style.visibility = "visible";
+    document.getElementById("changeColor").style.visibility = "visible";
 }
 
 
 function change_colors() {
-    if (colorPaletteNum == numOfColorPaletts-1) {
+    if (colorPaletteNum == numOfColorPaletts - 1) {
         colorPaletteNum = 0;
     } else {
         colorPaletteNum++;
     }
-    grids[0].grid[0][0].  change_color_palette(colorPaletteNum);
+    grids[0].grid[0][0].change_color_palette(colorPaletteNum);
     drawingContext.filter = 'none';
     background(grids[0].grid[0][0].backGroundColor(colorPaletteNum));
 }
