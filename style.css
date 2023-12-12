@@ -11,34 +11,38 @@ body {
     background-color: rgb(30, 30, 30);
 }
 
-h1,
-#prani_parent {
+.ui_element {
     font-family: "Saans";
     position: absolute;
-    padding: .2em .4em;
-    margin: .5em;
-    font-size: 2vw;
+    margin: .8em;
     background: rgb(30, 30, 30);
     cursor: default;
-    font-weight: normal;
+    border-radius: 999999em;
 }
 
-#pf {
+.ui_element > h1 {
+    font-weight: normal;
+    font-size: 3vw;
+    padding: .3em .4em;
+    margin: 0;
+}
+
+.pf {
     top: 0;
     left: 0;
 }
 
-#umprum {
+.umprum {
     bottom: 0;
     right: 0;
 }
 
-#newcolors {
+.newcolors {
     right: 0;
-    top: 2em;
+    top: 7em;
 }
 
-#download {
+.download {
     top: 0;
     right: 0;
     cursor: pointer;
@@ -63,10 +67,6 @@ h1,
 
 #prani {
     pointer-events: none;
-}
-
-.outline {
-    border: 2px solid white;
 }
 
 .noselect {

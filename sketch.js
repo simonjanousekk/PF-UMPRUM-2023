@@ -5,11 +5,20 @@ var framerate = 15
 
 var current_color_pallete
 
+var color_palletes
+
 function setup() {
     frameRate(framerate)
     let canvas = createCanvas(windowWidth, windowHeight);
     canvas.addClass("noselect");
     background(30);
+
+    color_palletes = [
+        [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), color(10)],
+        [color(222, 245, 229), color(188, 234, 213), color(158, 213, 197), color(142, 195, 176)],
+        [color((25, 24, 37)), color(134, 93, 255), color(227, 132, 255), color(255, 163, 253)],
+        [color("#DDDDDD"), color("#222831"), color("#30475E"), color(252, 80, 45)],
+    ]
 
     var longer_side = width > height ? width : height;
     var largest_cell_size = round(longer_side / 20);
@@ -78,22 +87,13 @@ function map_constrain(value, start1, stop1, start2, stop2) {
 
 
 function draw_shape(i_x, i_y, cell_size) {
-
     this.cell_size = cell_size;
     this.pos = createVector(i_x * cell_size, i_y * cell_size)
 
-    var r = random();
-    if (r > .3) {
-        this.c = color(255, 250, 250);
-        // break;
-    } else if (r > .2) {
-        this.c = 30;
-    } else {
-        this.c = color(random(255), random(255), random(255))
-    }
+    var c = current_color_pallete[floor(random(1, current_color_pallete.length))]
 
     noStroke();
-    fill(this.c);
+    fill(c);
     switch (floor(random(5))) {
         case 0:
             break;
@@ -136,14 +136,8 @@ function draw_shape(i_x, i_y, cell_size) {
 
 function change_colors() {
     current_color_pallete = color_palletes[floor(random(color_palletes.length - 1))]
-    background
+    background(current_color_pallete[0])
 }
-
-var color_palletes = [
-    [color(30),]
-]
-
-
 
 
 // screenshot function

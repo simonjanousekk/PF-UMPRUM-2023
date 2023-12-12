@@ -36,7 +36,7 @@ class DraggableElement {
 }
 const element2 = new DraggableElement(document.getElementById('prani_parent'));
 
-document.getElementById("tuzka").addEventListener("click", function (e) {
-    e.preventDefault();
-    console.log("click")
-})
+// document.getElementById("tuzka").addEventListener("click", function (e) {
+//     e.preventDefault();
+//     console.log("click")
+// })
