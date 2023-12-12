@@ -14,11 +14,17 @@ function setup() {
     background(30);
 
     color_palletes = [
-        [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), color(10)],
+        [color(185, 243, 228), color(234, 143, 234), color(255, 170, 207), color(10, 10, 10)],
         [color(222, 245, 229), color(188, 234, 213), color(158, 213, 197), color(142, 195, 176)],
         [color(223, 244, 243), color(221, 231, 242), color(185, 187, 223), color(135, 142, 205)],
-        [color("#DDDDDD"), color("#222831"), color("#30475E"), color(252, 80, 45)],
+        [color(221, 221, 221), color(34, 40, 49), color(48, 71, 94), color(252, 80, 45)],
         [color(241, 243, 248), color(214, 224, 240), color(141, 147, 171), color(57, 59, 68)],
+        [color(166, 242, 219), color(123, 202, 206), color(103, 142, 180), color(79, 78, 121)],
+        [color(235, 247, 253), color(165, 222, 241), color(54, 80, 108), color(35, 49, 66)],
+        [color(137, 138, 166), color(201, 187, 207), color(183, 211, 223), color(214, 239, 237)],
+        [color(255, 241, 193), color(247, 98, 98), color(33, 101, 131), color(41, 52, 98)],
+        [color(49, 107, 131), color(109, 130, 153), color(140, 161, 165), color(213, 191, 191)],
+        [color(246, 70, 98), color(198, 25, 81), color(116, 25, 56), color(86, 19, 42)],
     ]
 
     var longer_side = width > height ? width : height;
