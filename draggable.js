@@ -34,41 +34,9 @@ class DraggableElement {
         }
     }
 }
-const element2 = new DraggableElement(document.getElementById('prani'));
+const element2 = new DraggableElement(document.getElementById('prani_parent'));
 
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     align_absolute("download");
-// });
-
-// function align_absolute(id) {
-//     // Get the element
-//     var element = document.getElementById(id);
-
-//     // Calculate the desired position considering margin and padding
-//     var windowWidth = window.innerWidth;
-//     var windowHeight = window.innerHeight;
-//     var elementWidth = element.offsetWidth;
-//     var elementHeight = element.offsetHeight;
-
-//     var elementMargin = parseFloat(getComputedStyle(element).margin);
-//     var elementPadding = parseFloat(getComputedStyle(element).padding);
-
-//     var topPosition = windowHeight - elementHeight - elementMargin * 2; // Account for margin
-//     var leftPosition = windowWidth - elementWidth - elementMargin * 2; // Account for margin
-
-//     console.log(
-//         { windowWidth },
-//         { windowHeight },
-//         { elementWidth },
-//         { elementHeight },
-//         { topPosition },
-//         { leftPosition },
-//         { elementMargin },
-//         { elementPadding }
-//     )
-
-//     // Set the calculated position
-//     element.style.top = topPosition + 'px';
-//     element.style.left = leftPosition + 'px';
-// }
+document.getElementById("tuzka").addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log("click")
+})

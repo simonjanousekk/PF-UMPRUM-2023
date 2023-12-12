@@ -1,15 +1,9 @@
-// var cell_size = 50;
-// var cols, rows;
-var grid1, grid2;
-
 var user_layer = 0
-var layer_count = 4
 var cell_sizes
 
 var framerate = 15
-var layer_change_speed = 5
 
-var grids
+var current_color_pallete
 
 function setup() {
     frameRate(framerate)
@@ -26,83 +20,40 @@ function setup() {
         largest_cell_size / 8
     ]
 
-    grids = [
-        grid0 = new Cell_Layer(cell_sizes[0]),
-        grid1 = new Cell_Layer(cell_sizes[1]),
-        grid2 = new Cell_Layer(cell_sizes[2]),
-        grid3 = new Cell_Layer(cell_sizes[3])
-    ]
-
     prevMouseX = mouseX;
     prevMouseY = mouseY;
+
+    change_colors()
 }
 
 function draw() {
 
     if (!mouseIsPressed === true) {
         var mouse_speed = calculate_mouse_speed()
-        index_mouse_speed = floor(map_constrain(mouse_speed, 150, 20, 0, layer_count - 1));
+        index_mouse_speed = floor(map_constrain(mouse_speed, 150, 20, 0, cell_sizes.length - 1));
 
         change_layer(index_mouse_speed);
 
-        var current_cell_size = grids[user_layer].cell_size
+        var current_cell_size = cell_sizes[index_mouse_speed];
         var tmp = createVector(
             floor(mouseX / current_cell_size),
             floor(mouseY / current_cell_size)
         );
+        draw_shape(tmp.x, tmp.y, current_cell_size)
 
-        var tmp_cols = grids[user_layer].cols;
-        var tmp_rows = grids[user_layer].rows;
-
-        if (
-            tmp.x >= 0 && tmp.x < tmp_cols &&
-            tmp.y >= 0 && tmp.y < tmp_rows
-        ) {
-            grids[user_layer].grid[tmp.x][tmp.y].change_state();
-            grids[user_layer].grid[tmp.x][tmp.y].display();
-        }
-    }
-}
-
-function create_grid(cols, rows, cs) {
-    g = []
-    for (var x = 0; x < cols; x++) {
-        g[x] = [];
-        for (var y = 0; y < rows; y++) {
-            g[x][y] = new Cell(x * cs, y * cs, cs)
-        }
-    }
-    return g;
-}
-
-// grid class
-class Cell_Layer {
-    constructor(cs) {
-        this.cell_size = cs;
-        this.cols = round(windowWidth / this.cell_size);
-        this.rows = round(windowHeight / this.cell_size);
-        this.grid = create_grid(this.cols, this.rows, this.cell_size);
-    }
-
-    update_display() {
-        for (var x = 0; x < this.cols; x++) {
-            for (var y = 0; y < this.rows; y++) {
-                this.grid[x][y].display();
-            }
-        }
     }
 }
 
 // change layer that user is in (eg. what resolution grid are you drawing in)
 function change_layer_random() {
     user_layer += 1
-    if (user_layer >= layer_count) {
+    if (user_layer >= cell_sizes.length) {
         user_layer = 0
     }
 }
 
 function change_layer(index) {
-    if (index >= 0 && index <= layer_count) {
+    if (index >= 0 && index <= cell_sizes.length) {
         user_layer = index
     }
 }
@@ -119,18 +70,88 @@ function calculate_mouse_speed() {
 }
 
 
-// testing with keyboard
-function keyPressed() {
-    if (key == ' ') {
-        change_layer_random();
-    } else if (key == 's') {
-        capture_screenshot();
+function map_constrain(value, start1, stop1, start2, stop2) {
+    let mappedValue = map(value, start1, stop1, start2, stop2);
+    let constrainedValue = constrain(mappedValue, start2, stop2);
+    return constrainedValue;
+}
+
+
+function draw_shape(i_x, i_y, cell_size) {
+
+    this.cell_size = cell_size;
+    this.pos = createVector(i_x * cell_size, i_y * cell_size)
+
+    var r = random();
+    if (r > .3) {
+        this.c = color(255, 250, 250);
+        // break;
+    } else if (r > .2) {
+        this.c = 30;
+    } else {
+        this.c = color(random(255), random(255), random(255))
+    }
+
+    noStroke();
+    fill(this.c);
+    switch (floor(random(5))) {
+        case 0:
+            break;
+        case 1:
+            rect(
+                this.pos.x,
+                this.pos.y,
+                this.cell_size,
+                this.cell_size
+            );
+            break;
+        case 2:
+            circle(
+                this.pos.x + this.cell_size / 2,
+                this.pos.y + this.cell_size / 2,
+                this.cell_size)
+            break;
+        case 3:
+            triangle(
+                this.pos.x + this.cell_size / 2,
+                this.pos.y,
+                this.pos.x,
+                this.pos.y + this.cell_size,
+                this.pos.x + this.cell_size,
+                this.pos.y + this.cell_size
+            )
+            break;
+        case 4:
+            triangle(
+                this.pos.x,
+                this.pos.y,
+                this.pos.x + this.cell_size,
+                this.pos.y,
+                this.pos.x + this.cell_size / 2,
+                this.pos.y + this.cell_size
+            )
+            break;
     }
 }
+
+function change_colors() {
+    current_color_pallete = color_palletes[floor(random(color_palletes.length - 1))]
+    background
+}
+
+var color_palletes = [
+    [color(30),]
+]
+
+
 
 
 // screenshot function
 function capture_screenshot() {
+
+    document.getElementById("download").style.visibility = "hidden"
+    document.getElementById("tuzka").style.visibility = "hidden"
+
     html2canvas(document.body).then(canvas => {
         const imageData = canvas.toDataURL('image/png');
         const downloadLink = document.createElement('a');
@@ -141,16 +162,7 @@ function capture_screenshot() {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     });
-}
 
-
-
-
-
-
-
-function map_constrain(value, start1, stop1, start2, stop2) {
-    let mappedValue = map(value, start1, stop1, start2, stop2);
-    let constrainedValue = constrain(mappedValue, start2, stop2);
-    return constrainedValue;
+    document.getElementById("download").style.visibility = "visible"
+    document.getElementById("tuzka").style.visibility = "visible"
 }
