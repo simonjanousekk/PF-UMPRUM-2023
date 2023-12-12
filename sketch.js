@@ -25,6 +25,8 @@ function setup() {
         [color(255, 241, 193), color(247, 98, 98), color(33, 101, 131), color(41, 52, 98)],
         [color(49, 107, 131), color(109, 130, 153), color(140, 161, 165), color(213, 191, 191)],
         [color(246, 70, 98), color(198, 25, 81), color(116, 25, 56), color(86, 19, 42)],
+        [color(247, 247, 247), color(255, 183, 43), color(255, 230, 27), color(181, 254, 131)],
+
     ]
 
     var longer_side = width > height ? width : height;
