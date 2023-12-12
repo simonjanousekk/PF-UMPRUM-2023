@@ -21,9 +21,13 @@ body {
     /* filter: blur(.1em); */
 }
 
+.ui_element,
+.ui_element > * {
+    font-size: 2vw;
+}
+
 .ui_element > * {
     font-weight: normal;
-    font-size: 2vw;
     padding: .3em .6em;
     margin: 0;
 }
@@ -41,6 +45,7 @@ body {
 .newcolors {
     right: 0;
     top: 4em;
+    cursor: pointer;
 }
 
 .download {
@@ -61,12 +66,12 @@ body {
     z-index: 2;
     position: static;
     padding-right: 0;
-
+    height: 100%;
 }
 
 #prani_handle > svg {
     fill: rgb(255, 250, 250);
-    height: 100%;
+    height: 1em;
     position: static;
 }
 

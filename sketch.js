@@ -140,7 +140,7 @@ function draw_shape(i_x, i_y, cell_size) {
 }
 
 function change_colors() {
-    current_color_pallete = color_palletes[floor(random(color_palletes.length - 1))]
+    current_color_pallete = color_palletes[floor(random(color_palletes.length))]
     drawingContext.filter = "none";
     background(current_color_pallete[0])
 }
