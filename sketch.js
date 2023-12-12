@@ -143,8 +143,9 @@ function change_colors() {
 // screenshot function
 function capture_screenshot() {
 
-    document.getElementById("download").style.visibility = "hidden"
-    document.getElementById("tuzka").style.visibility = "hidden"
+    document.getElementsByClassName("download")[0].style.visibility = "hidden"
+    document.getElementsByClassName("newcolors")[0].style.visibility = "hidden"
+    document.getElementById("prani_handle").style.display = "none"
 
     html2canvas(document.body).then(canvas => {
         const imageData = canvas.toDataURL('image/png');
@@ -157,6 +158,13 @@ function capture_screenshot() {
         document.body.removeChild(downloadLink);
     });
 
-    document.getElementById("download").style.visibility = "visible"
-    document.getElementById("tuzka").style.visibility = "visible"
+    document.getElementById("prani_handle").style.display = "block"
+    document.getElementsByClassName("download")[0].style.visibility = "visible"
+    document.getElementsByClassName("newcolors")[0].style.visibility = "visible"
 }
+
+document.getElementById('prani').addEventListener('keypress', (evt) => {
+    if (evt.which === 13) {
+        evt.preventDefault();
+    }
+});
