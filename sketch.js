@@ -15,14 +15,44 @@ function setup() {
 
     color_palletes = [
         // [color("#"), color("#"), color("#"), color("#"), color("#")]
-        [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), color("#0A0A0A")],
-        [color("#DEE5E5"), color("#BCDAD5"), color("#9ED5C5"), color("#8EC3B0")],
-        [color("#DDDDDD"), color("#222831"), color("#30475E"), color("#FC502D")],
-        [color("#EEF0E5"), color("#B6C4B6"), color("#304D30"), color("#163020")],
-        [color("#F6F1EE"), color("#4F4A45"), color("#6C5F5B"), color("#ED7D31")],
-        [color("#FFF5E0"), color("#FF6969"), color("#C70039"), color("#141E46")],
-        [color("#93B1A6"), color("#5C8374"), color("#183D3D"), color("#040D12")]
+        [
+            color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), color("#0A0A0A"),
+        ],
+        [
+            color("#DEE5E5"), color("#BCDAD5"), color("#9ED5C5"), color("#8EC3B0"),
+        ],
+        [
+            color("#DFF4F3"), color("#DDE7F2"), color("#B9BBDF"), color("#878ECD"),
+        ],
+        [
+            color("#DDDDDD"), color("#222831"), color("#30475E"), color("#FC502D"),
+        ],
+        [
+            color("#F1F3F8"), color("#D6E0F0"), color("#8D93AB"), color("#393B44"),
+        ],
+        [
+            color("#A6F2DB"), color("#7BCACE"), color("#678EB4"), color("#4F4E79"),
+        ],
+        [
+            color("#EBF7FD"), color("#A5DEF1"), color("#365068"), color("#233142"),
+        ],
+        [
+            color("#898AA6"), color("#C9BBCF"), color("#B7D3DF"), color("#D6EFED"),
+        ],
+        [
+            color("#FFF1C1"), color("#F76262"), color("#216583"), color("#293462"),
+        ],
+        [
+            color("#316B83"), color("#6D8299"), color("#8CA1A5"), color("#D5BFBF"),
+        ],
+        [
+            color("#F64662"), color("#C61A51"), color("#741938"), color("#56132A"),
+        ],
+        [
+            color("#F7F7F7"), color("#FFB72B"), color("#FFE61B"), color("#B5FE83"),
+        ],
     ]
+
 
     var longer_side = width > height ? width : height;
     var largest_cell_size = round(longer_side / 15);
