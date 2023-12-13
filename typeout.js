@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+    type_text();
+});
+
+
+function type_text() {
+    console.log("typing");
     var texts = [
         "ahoj",
         "jak se mas",
@@ -7,15 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
     ]
     var textToType = texts[Math.floor(Math.random() * texts.length)]
     var typedTextElement = document.getElementById("prani");
-    function typeText() {
-        var index = 0;
-        var typingInterval = setInterval(function () {
-            typedTextElement.textContent += textToType[index];
-            index++;
-            if (index === textToType.length) {
-                clearInterval(typingInterval);
-            }
-        }, 60);
-    }
-    typeText();
-});
+    typedTextElement.innerHTML = "";
+    var index = 0;
+    var typingInterval = setInterval(function () {
+        typedTextElement.textContent += textToType[index];
+        index++;
+        if (index === textToType.length) {
+            clearInterval(typingInterval);
+        }
+    }, 60);
+}
