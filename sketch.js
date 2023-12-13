@@ -179,6 +179,7 @@ document.getElementById('prani').addEventListener('keypress', (evt) => {
     }
 });
 
+window.onresize = function () { location.reload(); }
 
 function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
