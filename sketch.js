@@ -51,6 +51,10 @@ function setup() {
         [
             color("#F7F7F7"), color("#FFB72B"), color("#FFE61B"), color("#B5FE83"),
         ],
+        [
+            // umprum paleta nesahat!!!
+            color("#fff"), color("#00FF"), color("#00FF"), color("#fff"), color("#000")
+        ]
     ]
 
 
@@ -69,9 +73,16 @@ function setup() {
     change_colors()
 }
 
+var drawing = true;
+var started = false;
+
 function draw() {
 
-    if (!mouseIsPressed === true) {
+    if (!started && !(mouseX == 0) && !(mouseY == 0)) {
+        started = true;
+    }
+
+    if (drawing && started) {
 
         var mouse_speed = calculate_mouse_speed()
         index_mouse_speed = floor(map_constrain(mouse_speed, 150, 20, 0, cell_sizes.length - 1));
@@ -115,7 +126,6 @@ function change_colors() {
     while (prev_color_pallete == current_color_pallete) {
         current_color_pallete = color_palletes[floor(random(color_palletes.length))];
     }
-    drawingContext.filter = "none";
     background(current_color_pallete[0]);
 }
 
@@ -128,7 +138,6 @@ function draw_shape(i_x, i_y, cell_size) {
 
     var r = random(-1, 8);
     r = clamp(r, 0, 8);
-    drawingContext.filter = 'blur(' + r + 'px)';
 
 
     noStroke();
@@ -201,11 +210,6 @@ function capture_screenshot() {
     document.getElementsByClassName("newcolors")[0].style.visibility = "visible"
 }
 
-document.getElementById('prani').addEventListener('keypress', (evt) => {
-    if (evt.which === 13) {
-        evt.preventDefault();
-    }
-});
 
 window.onresize = function () { location.reload(); }
 

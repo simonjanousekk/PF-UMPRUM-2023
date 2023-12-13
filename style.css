@@ -23,7 +23,7 @@ body {
 
 .ui_element,
 .ui_element > * {
-    font-size: 2vw;
+    font-size: max(18px, 2vw);
 }
 
 .ui_element > * {
@@ -54,9 +54,13 @@ body {
     cursor: pointer;
 }
 
+#prani {
+    word-break: break-all;
+}
+
 #prani_parent {
-    top: 0;
-    left: 10em;
+    top: 10em;
+    left: 0;
     position: absolute;
 
     display: flex;
@@ -87,4 +91,12 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:focus {
+    color: rgb(255, 250, 250);
+    text-decoration: none;
 }
