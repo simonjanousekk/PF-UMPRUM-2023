@@ -1,7 +1,7 @@
 var user_layer = 0
 var cell_sizes
 
-var framerate = 15
+var framerate = 24
 
 var current_color_pallete
 

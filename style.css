@@ -17,7 +17,7 @@ body {
     margin: .8em;
     background: rgb(30, 30, 30);
     cursor: default;
-    border-radius: 999999em;
+    border-radius: 1em;
     /* filter: blur(.1em); */
 }
 
@@ -78,6 +78,7 @@ body {
 #prani:focus {
     outline: none;
 }
+
 
 .noselect {
     -webkit-touch-callout: none;
