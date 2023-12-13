@@ -72,6 +72,7 @@ function setup() {
 function draw() {
 
     if (!mouseIsPressed === true) {
+
         var mouse_speed = calculate_mouse_speed()
         index_mouse_speed = floor(map_constrain(mouse_speed, 150, 20, 0, cell_sizes.length - 1));
 
