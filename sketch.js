@@ -14,11 +14,14 @@ function setup() {
     background(30);
 
     color_palletes = [
-        [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), color(10)],
-        [color(222, 245, 229), color(188, 234, 213), color(158, 213, 197), color(142, 195, 176)],
-        [color(25, 24, 37), color(134, 93, 255), color(227, 132, 255), color(255, 163, 253)],
-        [color(6, 40, 61), color(19, 99, 223), color(71, 181, 255), color(223, 246, 255)],
-        [color("#DDDDDD"), color("#222831"), color("#30475E"), color(252, 80, 45)],
+        // [color("#"), color("#"), color("#"), color("#"), color("#")]
+        [color("#B9F3E4"), color("#EA8FEA"), color("#FFAACF"), color("#0A0A0A")],
+        [color("#DEE5E5"), color("#BCDAD5"), color("#9ED5C5"), color("#8EC3B0")],
+        [color("#DDDDDD"), color("#222831"), color("#30475E"), color("#FC502D")],
+        [color("#EEF0E5"), color("#B6C4B6"), color("#304D30"), color("#163020")],
+        [color("#F6F1EE"), color("#4F4A45"), color("#6C5F5B"), color("#ED7D31")],
+        [color("#FFF5E0"), color("#FF6969"), color("#C70039"), color("#141E46")],
+        [color("#93B1A6"), color("#5C8374"), color("#183D3D"), color("#040D12")]
     ]
 
     var longer_side = width > height ? width : height;
@@ -54,23 +57,13 @@ function draw() {
     }
 }
 
-// change layer that user is in (eg. what resolution grid are you drawing in)
-function change_layer_random() {
-    user_layer += 1
-    if (user_layer >= cell_sizes.length) {
-        user_layer = 0
-    }
-}
-
 function change_layer(index) {
     if (index >= 0 && index <= cell_sizes.length) {
         user_layer = index
     }
 }
 
-let prevMouseX;
-let prevMouseY;
-let mouseSpeed;
+let prevMouseX, prevMouseY, mouseSpeed;
 function calculate_mouse_speed() {
     let deltaX = mouseX - prevMouseX;
     let deltaY = mouseY - prevMouseY;
@@ -84,6 +77,15 @@ function map_constrain(value, start1, stop1, start2, stop2) {
     let mappedValue = map(value, start1, stop1, start2, stop2);
     let constrainedValue = constrain(mappedValue, start2, stop2);
     return constrainedValue;
+}
+
+function change_colors() {
+    var prev_color_pallete = current_color_pallete;
+    while (prev_color_pallete == current_color_pallete) {
+        current_color_pallete = color_palletes[floor(random(color_palletes.length))];
+    }
+    drawingContext.filter = "none";
+    background(current_color_pallete[0]);
 }
 
 
@@ -140,14 +142,9 @@ function draw_shape(i_x, i_y, cell_size) {
     }
 }
 
-function change_colors() {
-    var prev_color_pallete = current_color_pallete;
-    while (prev_color_pallete == current_color_pallete) {
-        current_color_pallete = color_palletes[floor(random(color_palletes.length))];
-    }
-    drawingContext.filter = "none";
-    background(current_color_pallete[0])
-}
+
+
+
 
 
 // screenshot function
