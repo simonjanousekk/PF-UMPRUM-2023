@@ -216,3 +216,15 @@ window.onresize = function () { location.reload(); }
 function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
 }
+
+function trigger_reload_animation() {
+    var icon = document.getElementById('reload_icon');
+    // icon.style.animation = "";
+    // icon.style.animation = "reload_rotation .5s forwards ease"
+    icon.classList.add("reload_rotation_animation");
+    setTimeout(function () {
+        icon.classList.remove("reload_rotation_animation");
+    }, 500);
+}
+
+var reload_animation_interval = setInterval(trigger_reload_animation, 5000);

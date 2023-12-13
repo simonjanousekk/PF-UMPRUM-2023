@@ -30,6 +30,11 @@ body {
     font-weight: normal;
     padding: .3em .6em;
     margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .2em;
 }
 
 .pf {
@@ -73,11 +78,13 @@ body {
     height: 1em;
 }
 
-#prani_handle > svg {
+svg,
+svg > path {
     fill: rgb(255, 250, 250);
     height: 1em;
     position: static;
 }
+
 
 #prani:focus {
     outline: none;
@@ -99,4 +106,14 @@ a:hover,
 a:focus {
     color: rgb(255, 250, 250);
     text-decoration: none;
+}
+
+@keyframes reload_rotation {
+    100% {
+        rotate: 360deg
+    }
+}
+
+.reload_rotation_animation {
+    animation: reload_rotation .5s forwards ease;
 }
