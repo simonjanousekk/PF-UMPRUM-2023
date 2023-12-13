@@ -59,9 +59,13 @@ body {
     cursor: pointer;
 }
 
-#prani {
+/* #prani {
     word-break: break-all;
-}
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+} */
 
 #prani_parent {
     top: 10em;
