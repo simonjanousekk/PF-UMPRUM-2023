@@ -16,6 +16,10 @@ function type_text() {
         "Ať tvůj rok 2024 bude tak světlý jako obrazovka tvého telefonu v 3 ráno!",
         "Vše nejlepší do nového roku!",
         "Šťastný Nový rok! Ať tvé kreslení nevyvolává tolik otázek jako mé pokusy o vysvětlení technologie mé babičce!",
+        "Přeji vám nový rok plný inspirace a aspoň jednoho vyučujícího, který přehlédne, že jste neodevzdali práce včas!",
+        "Ať jsou vaše skici vždy rychlejší než internetové připojení ve škole!",
+        "Ať vás nový rok překvapí víc než poslední minuta před odevzdáním semestrální práce!",
+        "Přeji vám, abyste měli v novém roce víc kreativních chvil než nezodpovězených e-mailů!",
     ]
     while (textToType == prev_textToType) {
         textToType = texts[Math.floor(Math.random() * texts.length)]

@@ -59,15 +59,8 @@ body {
     cursor: pointer;
 }
 
-/* #prani {
-    word-break: break-all;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-} */
-
 #prani_parent {
+    max-width: 50%;
     top: 10em;
     left: 0;
     position: absolute;
@@ -118,6 +111,7 @@ a:focus {
     }
 }
 
-.reload_rotation_animation {
+.reload_rotation_animation,
+.pf:hover {
     animation: reload_rotation .5s forwards ease;
 }
