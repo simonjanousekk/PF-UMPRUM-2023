@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 var typingInterval;
+var textToType;
 function type_text() {
     clearInterval(typingInterval);
+    prev_textToType = textToType;
     var texts = [
         "Ať tvé novoroční předsevzetí nevyhasne tak rychle jako moje motivace k vytváření nových vtipů!",
         "Šťastný Nový rok! Ať tvé nápady rostou jako houby po dešti, a ne jako houby v mé staré kuchyni!",
@@ -15,7 +17,9 @@ function type_text() {
         "Vše nejlepší do nového roku!",
         "Šťastný Nový rok! Ať tvé kreslení nevyvolává tolik otázek jako mé pokusy o vysvětlení technologie mé babičce!",
     ]
-    var textToType = texts[Math.floor(Math.random() * texts.length)]
+    while (textToType == prev_textToType) {
+        textToType = texts[Math.floor(Math.random() * texts.length)]
+    }
     var typedTextElement = document.getElementById("prani");
     typedTextElement.innerHTML = "";
     var index = 0;
