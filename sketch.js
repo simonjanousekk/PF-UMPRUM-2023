@@ -183,15 +183,12 @@ function draw_shape(i_x, i_y, cell_size) {
 }
 
 
-
-
-
-
 // screenshot function
 function capture_screenshot() {
 
     document.getElementsByClassName("download")[0].style.visibility = "hidden"
     document.getElementsByClassName("newcolors")[0].style.visibility = "hidden"
+    document.getElementsByClassName("lang")[0].style.visibility = "hidden"
     document.getElementById("prani_handle").style.display = "none"
 
     html2canvas(document.body).then(canvas => {
@@ -206,6 +203,7 @@ function capture_screenshot() {
     });
 
     document.getElementById("prani_handle").style.display = "block"
+    document.getElementsByClassName("lang")[0].style.visibility = "visible"
     document.getElementsByClassName("download")[0].style.visibility = "visible"
     document.getElementsByClassName("newcolors")[0].style.visibility = "visible"
 }

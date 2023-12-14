@@ -1,9 +1,9 @@
 // Array of SVG files (replace with your actual file paths)
 var svgFiles = [
-    './favicon_images/circle.svg',
-    './favicon_images/square.svg',
-    './favicon_images/triangle_one.svg',
-    './favicon_images/triangle_two.svg',
+    './favicon_images/circle.png',
+    './favicon_images/square.png',
+    './favicon_images/triangle_one.png',
+    './favicon_images/triangle_two.png',
 ];
 
 function getRandomColor() {
