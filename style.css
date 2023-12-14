@@ -49,7 +49,7 @@ body {
 
 .newcolors {
     right: 0;
-    top: 2em;
+    top: 2.5em;
     cursor: pointer;
 }
 
@@ -66,6 +66,11 @@ body {
     position: absolute;
 
     display: flex;
+}
+
+.lang {
+    top: 5em;
+    right: 0;
 }
 
 #prani_handle {
@@ -114,4 +119,36 @@ a:focus {
 .reload_rotation_animation,
 .pf:hover {
     animation: reload_rotation .5s forwards ease;
+}
+
+.lang_rotation_to_en {
+    animation: lang_rotation_to_en .5s forwards ease;
+}
+
+.lang_rotation_to_cz {
+    animation: lang_rotation_to_cz .5s forwards ease;
+}
+
+@keyframes lang_rotation_to_en {
+    0% {
+        rotate: 180deg
+    }
+
+    100% {
+        rotate: 0deg
+    }
+}
+
+@keyframes lang_rotation_to_cz {
+    100% {
+        rotate: 180deg;
+    }
+}
+
+.lang_en {
+    rotate: 0deg;
+}
+
+.lang_cz {
+    rotate: 180deg;
 }

@@ -219,12 +219,48 @@ function clamp(value, min, max) {
 
 function trigger_reload_animation() {
     var icon = document.getElementById('reload_icon');
-    // icon.style.animation = "";
-    // icon.style.animation = "reload_rotation .5s forwards ease"
     icon.classList.add("reload_rotation_animation");
     setTimeout(function () {
         icon.classList.remove("reload_rotation_animation");
     }, 500);
 }
 
+function trigger_lang_animation() {
+    if (langEN) {
+        var icon = document.getElementById('lang_icon');
+        icon.classList.add("lang_rotation_to_en");
+        icon.classList.remove("lang_cz")
+        setTimeout(function () {
+            icon.classList.remove("lang_rotation_to_en");
+            icon.classList.add("lang_en");
+        }, 500);
+    } else {
+        var icon = document.getElementById('lang_icon');
+        icon.classList.add("lang_rotation_to_cz");
+        icon.classList.remove("lang_en")
+        setTimeout(function () {
+            icon.classList.remove("lang_rotation_to_cz");
+            icon.classList.add("lang_cz");
+        }, 500);
+    }
+}
+
 var reload_animation_interval = setInterval(trigger_reload_animation, 5000);
+
+
+var langEN = false;
+function change_lang() {
+    langEN = !langEN;
+    type_text();
+    console.log(langEN ? "en" : "cz")
+
+    if (langEN) {
+        // document.getElementById("lang").innerHTML = "cz";
+        document.getElementById("download").childNodes[0].nodeValue = "download";
+        document.getElementById("newcolors").childNodes[0].nodeValue = "again";
+    } else {
+        // document.getElementById("lang").innerHTML = "en";
+        document.getElementById("download").childNodes[0].nodeValue = "stáhnout";
+        document.getElementById("newcolors").childNodes[0].nodeValue = "znovu";
+    }
+}
