@@ -9,7 +9,7 @@ function type_text() {
     prev_textToType = textToType;
     var texts = [
         "Ať tvé novoroční předsevzetí nevyhasne tak rychle jako moje motivace k vytváření nových vtipů!",
-        "Šťastný Nový rok! Ať tvé nápady rostou jako houby po dešti, a ne jako houby v mé staré kuchyni!",
+        "Šťastný nový rok! Ať tvé nápady rostou jako houby po dešti, a ne jako houby v mé staré kuchyni!",
         "Ať tvoje novoroční předsevzetí nezmizí tak rychle jako zájem na prvním rande!",
         "Přeji ti víc spánku než emoji na tvé klávesnici!",
         "Ať tvé novoroční předsevzetí trvá déle než baterie ve tvém mobilu!",
