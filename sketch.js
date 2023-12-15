@@ -127,6 +127,7 @@ function change_colors() {
         current_color_pallete = color_palletes[floor(random(color_palletes.length))];
     }
     background(current_color_pallete[0]);
+    document.body.style.backgroundColor = current_color_pallete[0];
 }
 
 
