@@ -161,7 +161,6 @@ function draw_shape(i_x, i_y, cell_size) {
 
 // screenshot function
 function capture_screenshot() {
-
     document.getElementsByClassName("download")[0].style.visibility = "hidden"
     document.getElementsByClassName("newcolors")[0].style.visibility = "hidden"
     document.getElementsByClassName("lang")[0].style.visibility = "hidden"
@@ -220,7 +219,6 @@ function trigger_lang_animation() {
 }
 
 var reload_animation_interval = setInterval(trigger_reload_animation, 5000);
-
 
 var langEN = false;
 function change_lang() {
