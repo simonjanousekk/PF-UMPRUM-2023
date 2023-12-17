@@ -3,12 +3,11 @@ var cell_sizes
 
 var framerate = 24
 
-var current_color_pallete
-
-var color_palletes
+var color_palletes, longer_side, current_color_pallete
 
 function setup() {
-    frameRate(framerate)
+
+    frameRate(framerate);
     let canvas = createCanvas(windowWidth, windowHeight);
     canvas.addClass("noselect");
     background(30);
@@ -31,7 +30,7 @@ function setup() {
     ]
 
 
-    var longer_side = width > height ? width : height;
+    longer_side = width > height ? width : height;
     var largest_cell_size = round(longer_side / 15);
     cell_sizes = [
         largest_cell_size,
@@ -59,7 +58,7 @@ function draw() {
 
         var mouse_speed = calculate_mouse_speed()
         var min_speed = 20;
-        var max_speed = 150;
+        var max_speed = longer_side / 10;
         index_mouse_speed = floor(map_constrain(mouse_speed, max_speed, min_speed, 0, cell_sizes.length - 1));
 
         change_layer(index_mouse_speed);
