@@ -116,8 +116,7 @@ a:focus {
     }
 }
 
-.reload_rotation_animation,
-.pf:hover {
+.reload_rotation_animation {
     animation: reload_rotation .5s forwards ease;
 }
 
